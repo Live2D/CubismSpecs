@@ -21,20 +21,54 @@
 			},
 			"required": ["X", "Y"]
 		},
-		"normalization value": {
-			"Minimum": {
-				"description": "正規化の最小値",
-				"type": "number"
+		"effective force": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"Gravity": {
+					"description": "重力",
+					"$ref": "#/definitions/vector2"
+				},
+				"Wind": {
+					"description": "風（使用していない）",
+					"$ref": "#/definitions/vector2"
+				}
 			},
-			"Default": {
-				"description": "正規化範囲の中心",
-				"type": "number"
+			"required": ["Gravity", "Wind"]
+		},
+		"physics dictionary" : {
+			"description": "物理演算設定のIDと名前を関連付ける",
+			"type": "object",
+			"properties": {
+				"Id": {
+					"description": "物理演算設定のID（モデル毎にユニーク）",
+					"type": "string"
+				},
+				"Name": {
+					"description": "物理演算設定の名前（グループ名）",
+					"type": "string"
+				}
+				"required": ["Id", "Name"]
 			}
-			"Maximum": {
-				"description": "正規化の最大値",
-				"type": "number"
-			},
-			"required": ["Minimum", "Default", "Maximum"]
+		},
+		"normalization value": {
+			"description": "正規化処理で利用する値を格納",
+			"type": "object",
+			"properties": {
+				"Minimum": {
+					"description": "正規化の最小値",
+					"type": "number"
+				},
+				"Default": {
+					"description": "正規化範囲の中心",
+					"type": "number"
+				}
+				"Maximum": {
+					"description": "正規化の最大値",
+					"type": "number"
+				},
+				"required": ["Minimum", "Default", "Maximum"]
+			}
 		},
 		"parameter" : {
 			"description": "Target parameter of model.",
@@ -206,34 +240,32 @@
 				"TotalVertexCount": {
 					"description": "Total number of vertices.",
 					"type": "number"
-				}
-			},
-			"required": ["PhysicsSettingCount", "TotalInputCount", "TotalOutputCount", "TotalVertexCount"]
-		},
-		"EffectiveForces": {
-			"description": "",
-			"type": "object",
-			"properties": {
-				"Gravity": {
-					"description": "重力",
-					"$ref": "#/definitions/vector2"
 				},
-				"Wind": {
-					"description": "風（使用していない）",
-					"$ref": "#/definitions/vector2"
+				"EffectiveForces": {
+					"description": "重力、風等の設定値",
+					"$ref": "#/definitions/effective force"
+				},
+				"PhysicsDictionary": {
+					"description": "物理演算設定IDと名前の一覧",
+					"type": "array",
+					"items": {
+						"description": "",
+						"$ref": "#/definitions/physics dictionary"
+					}
 				}
 			},
-			"required": ["Gravity", "Wind"]
+			"required": ["PhysicsSettingCount", "TotalInputCount", "TotalOutputCount", "TotalVertexCount", "EffectiveForces", "PhysicsDictionary"]
 		}
 	},
-	"required": ["Version", "Meta", "EffectiveForces", "PhysicsSettings"]
+	"required": ["Version", "Meta", "PhysicsSettings"]
 }
 ```
 
 ---
 
-## TODO Description
+## Description
 
+* Cubism Editor 3.0.10（2017/08/17 リリース予定） で対応予定
 
 ---
 
@@ -246,17 +278,27 @@
 		"PhysicsSettingCount": 2,
 		"TotalInputCount": 3,
 		"TotalOutputCount": 4,
-		"VertexCount": 5
-	},
-	"EffectiveForces": {
-		"Gravity": {
-			"X": 0,
-			"Y": 1
+		"VertexCount": 5,
+		"EffectiveForces": {
+			"Gravity": {
+				"X": 0,
+				"Y": 1
+			},
+			"Wind": {
+				"X": 0,
+				"Y": 0
+			}
 		},
-		"Wind": {
-			"X": 0,
-			"Y": 0
-		}
+		"PhysicsDictionary": [
+			{
+				"Id": "PhysicsSetting1",
+				"Name": "髪揺れ　左"
+			},
+			{
+				"Id": "PhysicsSetting2",
+				"Name": "髪揺れ　右"
+			}
+		]
 	},
 	"PhysicsSettings": [
 		{
@@ -269,7 +311,7 @@
 					},
 					"Weight": 50,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				},
 				{
 					"Source": {
@@ -278,7 +320,7 @@
 					},
 					"Weight": 50,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				}
 			],
 			"Output": [
@@ -291,7 +333,7 @@
 					"Scale": 1,
 					"Weight": 100,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				},
 				{
 					"Destination": {
@@ -302,7 +344,7 @@
 					"Scale": 1,
 					"Weight": 100,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				},
 				{
 					"Destination": {
@@ -313,7 +355,7 @@
 					"Scale": 1,
 					"Weight": 100,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				}
 			],
 			"Vertices": [
@@ -371,7 +413,7 @@
 					},
 					"Weight": 1,
 					"Type": "X",
-					"Reflect": "false"
+					"Reflect": false
 				}
 			],
 			"Output": [
@@ -384,7 +426,7 @@
 					"Scale": 1,
 					"Weight": 100,
 					"Type": "Angle",
-					"Reflect": "false"
+					"Reflect": false
 				}
 			],
 			"Vertices": [

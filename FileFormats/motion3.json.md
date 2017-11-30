@@ -13,7 +13,8 @@
       "type": "object",
       "properties": {
         "Target": {
-          "description": "Target type."
+          "description": "Target type.",
+          "type": "string"
         },
         "Id": {
           "description": "Identifier for mapping curve to target.",
@@ -28,6 +29,21 @@
         }
       },
       "required": ["Target", "Id", "Segments"]
+    },
+    "userData": {
+      "description": "User data.",
+      "type": "object",
+      "properties": {
+        "Time": {
+          "description": "Time in seconds.",
+          "type": "number"
+        },
+        "Value": {
+          "description": "Content of user data.",
+          "type": "string"
+        }
+      },
+      "required": ["Time", "Value"]
     }
    },
   "properties": {
@@ -47,10 +63,6 @@
           "description": "Framerate of the motion in seconds.",
           "type": "number"
         },
-        "Loop": {
-          "Description": "Loop indicator.",
-          "type": "boolean"
-        },
         "CurveCount": {
           "description": "The total number of curves.",
           "type": "number",
@@ -62,9 +74,17 @@
         "TotalPointCount": {
           "description": "The total number of points (from all segments of all curves).",
           "type": "number"
+        },
+        "UserDataCount": {
+          "description": "The total number of UserData.",
+          "type": "number"
+        },
+        "TotalUserDataSize": {
+          "description": "The total size of UserData in bytes.",
+          "type": "number"
         }
       },
-      "required": ["Duration", "Fps", "Loop", "CurveCount", "TotalSegmentCount", "TotalPointCount"]
+      "required": ["Duration", "Fps", "CurveCount", "TotalSegmentCount", "TotalPointCount", "UserDataCount", "TotalUserDataSize"]
     },
     "Curves": {
       "description": "Motion curves.",
@@ -72,7 +92,14 @@
       "items": {
         "$ref": "#/definitions/curve"
       }
-    }
+    },
+    "UserData": {
+      "description": "User data.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/userData"
+      }
+    }    
   },
   "required": ["Version", "Meta", "Curves"]
 }
@@ -148,8 +175,20 @@ Curves can't be empty.
     "Fps": 120,
     "CurveCount": 3,
     "TotalSegmentCount": 3,
-    "TotalPointCount": 6
+    "TotalPointCount": 6,
+    "UserDataCount": 2,
+    "TotalUserDataSize": 8
   },
+  "UserData": [
+    {
+      "Time": 1.234,
+      "Value": "hoge"
+    },
+    {
+      "Time": 5.612,
+      "Value": "fuga"
+    }
+  ],
   "Curves": [
     {
       "Target": "Model",

@@ -53,6 +53,10 @@
         "Physics": {
           "description": "[Optional] Relative path to the physics3.json file.",
           "type": "string"
+        },
+        "UserData": {
+          "description": "[Optional] Relative path to the userdata3.json file.",
+          "type": "string"
         }
       },
       "required": ["Moc", "Textures"]
@@ -104,7 +108,8 @@ One of the following:
     "Textures": [
       "Sample.png"
     ],
-    "Physics": "Sample.physics3.json"
+    "Physics": "Sample.physics3.json",
+    "UserData": "Sample.userdata3.json"
   },
   "Groups": [
     {
