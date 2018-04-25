@@ -5,7 +5,7 @@
 ```json
 {
   "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism motion.3json File Format (Draft)",
+  "title": "Cubism motion.3json File Format",
   "type": "object",
   "definitions": {
     "curve": {
@@ -20,6 +20,14 @@
           "description": "Identifier for mapping curve to target.",
           "type": "string"
         },
+        "FadeInTime": {
+          "description": "[Optional] Time of the Fade-In for easing in seconds.",
+          "type": "number"
+        },
+        "FadeOutTime": {
+          "description": "[Optional] Time of the Fade-Out for easing in seconds.",
+          "type": "number"
+        },
         "Segments": {
           "description": "Flattened segments.",
           "type": "array",
@@ -28,7 +36,8 @@
           }
         }
       },
-      "required": ["Target", "Id", "Segments"]
+      "required": ["Target", "Id", "Segments"],
+      "additionalProperties": false
     },
     "userData": {
       "description": "User data.",
@@ -43,7 +52,8 @@
           "type": "string"
         }
       },
-      "required": ["Time", "Value"]
+      "required": ["Time", "Value"],
+      "additionalProperties": false
     }
    },
   "properties": {
@@ -63,28 +73,45 @@
           "description": "Framerate of the motion in seconds.",
           "type": "number"
         },
+        "Loop": {
+          "description": "[Optional] Status of the looping of the motion.",
+          "type": "boolean"
+        },
+        "AreBeziersRestricted": {
+          "description": "[Optional] Status of the restriction of Bezier handles'X translations.",
+          "type": "boolean"
+        },
+        "FadeInTime": {
+          "description": "[Optional] Time of the overall Fade-In for easing in seconds.",
+          "type": "number"
+        },
+        "FadeOutTime": {
+          "description": "[Optional] Time of the overall Fade-Out for easing in seconds.",
+          "type": "number"
+        },
         "CurveCount": {
           "description": "The total number of curves.",
-          "type": "number",
+          "type": "number"
         },
         "TotalSegmentCount": {
           "description": "The total number of segments (from all curves).",
-          "type": "number",
+          "type": "number"
         },
         "TotalPointCount": {
           "description": "The total number of points (from all segments of all curves).",
           "type": "number"
         },
         "UserDataCount": {
-          "description": "The total number of UserData.",
+          "description": "[Optional] The total number of UserData.",
           "type": "number"
         },
         "TotalUserDataSize": {
-          "description": "The total size of UserData in bytes.",
+          "description": "[Optional] The total size of UserData in bytes.",
           "type": "number"
         }
       },
-      "required": ["Duration", "Fps", "CurveCount", "TotalSegmentCount", "TotalPointCount", "UserDataCount", "TotalUserDataSize"]
+      "required": ["Duration", "Fps", "CurveCount", "TotalSegmentCount", "TotalPointCount"],
+      "additionalProperties": false
     },
     "Curves": {
       "description": "Motion curves.",
@@ -94,14 +121,15 @@
       }
     },
     "UserData": {
-      "description": "User data.",
+      "description": "[Optional] User data.",
       "type": "array",
       "items": {
         "$ref": "#/definitions/userData"
       }
     }    
   },
-  "required": ["Version", "Meta", "Curves"]
+  "required": ["Version", "Meta", "Curves"],
+  "additionalProperties": false
 }
 ```
 
@@ -173,6 +201,8 @@ Curves can't be empty.
   "Meta": {
     "Duration": 1,
     "Fps": 120,
+    "FadeInTime": 2,
+    "FadeOutTime": 2,
     "CurveCount": 3,
     "TotalSegmentCount": 3,
     "TotalPointCount": 6,
@@ -203,6 +233,8 @@ Curves can't be empty.
     {
       "Target": "PartOpacity",
       "Id": "ArmL",
+      "FadeInTime": 2,
+      "FadeOutTime": 2,
       "Segments": [0, 0, 0, 1, 1]
     }
   ]

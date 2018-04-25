@@ -25,7 +25,8 @@
           "type": "string"
         }
       },
-      "required": ["Target", "Id", "Value"]
+      "required": ["Target", "Id", "Value"],
+      "additionalProperties": false
     }
    },
   "properties": {
@@ -46,7 +47,8 @@
           "type": "number"
         }
       },
-      "required": ["UserDataCount", "TotalUserDataSize"]
+      "required": ["UserDataCount", "TotalUserDataSize"],
+      "additionalProperties": false
     },
     "UserData": {
       "description": "User data.",
@@ -56,7 +58,8 @@
       }
     }    
   },
-  "required": ["Version", "Meta", "UserData"]
+  "required": ["Version", "Meta", "UserData"],
+  "additionalProperties": false
 }
 ```
 

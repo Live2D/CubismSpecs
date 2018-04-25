@@ -5,7 +5,7 @@
 ```json
 {
   "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism model.3json File Format (Draft)",
+  "title": "Cubism model.3json File Format",
   "type": "object",
   "definitions": {
     "group": {
@@ -27,7 +27,48 @@
           }
         }
       },
-      "required": ["Target", "Name", "Ids"]
+      "required": ["Target", "Name", "Ids"],
+      "additionalProperties": false
+    },
+    "hitareas": {
+      "description": "Collision detection.",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "description": "Unique name of group.",
+          "type": "string"
+        },
+        "Id": {
+          "description": "IDs for mapping to target.",
+          "type": "string"
+        }
+      },
+      "required": ["Name", "Id"],
+      "additionalProperties": false
+    },
+    "motion": {
+      "description": "Motion.",
+      "type": "object",
+      "properties": {
+        "File": {
+          "description": "File name.",
+          "type": "string"
+        },
+        "FadeOutTime": {
+          "description": "[Optional] Time of the Fade-out for motion easing in seconds.",
+          "type": "number"
+        },
+        "FadeInTime": {
+          "description": "[Optional] Time of the Fade-In for motion easing in seconds..",
+          "type": "number"
+        },
+        "Sound": {
+          "description": "[Optional] Audio files playback with motion.",
+          "type": "string"
+        }
+      },
+      "required": ["File"],
+      "additionalProperties": false
     }
    },
   "properties": {
@@ -57,9 +98,43 @@
         "UserData": {
           "description": "[Optional] Relative path to the userdata3.json file.",
           "type": "string"
+        },
+        "Pose": {
+          "description": "[Optional] Relative path to the pose3.json file.",
+          "type": "string"
+        },
+        "Expressions": {
+          "description": "[Optional] Relative path to the exp3.json file.",
+          "type": "array",
+          "items":{
+            "type":"object",
+            "properties":
+            {
+              "Name":{"type":"string"},
+              "File":{"type":"string"}
+            },
+            "required": ["Name", "File"],
+            "additionalProperties": false
+          }
+        },
+        "Motions": {
+          "description": "[Optional] Relative path to the motion3.json file.",
+          "type": "object",
+          "patternProperties":
+          {
+            ".+":
+            {
+              "type": "array",
+              "items":{
+                "$ref": "#/definitions/motion"
+              }
+            }
+          },
+          "additionalProperties": false
         }
       },
-      "required": ["Moc", "Textures"]
+      "required": ["Moc", "Textures"],
+      "additionalProperties": false
     },
     "Groups": {
       "description": "[Optional] groups.",
@@ -67,9 +142,34 @@
       "items": {
         "$ref": "#/definitions/group"
       }
+    },
+    "HitAreas": {
+      "description": "[Optional]Collision detection",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/hitareas"
+      }
+    },
+    "Layout": {
+      "description": "[Optional]Layout",
+      "type": "object",
+      "properties":{
+        "width" : { "type": "number" },
+        "height" : { "type": "number" },
+        "x" : { "type": "number" },
+        "y" : { "type": "number" },
+        "center_x" : { "type": "number" },
+        "center_y" : { "type": "number" },
+        "top" : { "type": "number" },
+        "bottom" : { "type": "number" },
+        "left" : { "type": "number" },
+        "right" : { "type": "number" }
+      },
+      "additionalProperties": false
     }
   },
-  "required": ["Version", "FileReferences"]
+  "required": ["Version", "FileReferences"],
+  "additionalProperties": false
 }
 ```
 

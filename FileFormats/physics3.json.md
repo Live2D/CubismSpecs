@@ -5,11 +5,11 @@
 ```json
 {
 	"$schema": "http://json-schema.org/schema#",
-	"title": "Cubism physics3.json File Format (Draft)",
+	"title": "Cubism physics3.json File Format",
 	"type": "object",
 	"definitions": {
 		"vector2": {
-			"description": "2-component vector.",
+			"description": "Two-dimensional vector.",
 			"type": "object",
 			"properties": {
 				"X": {
@@ -19,59 +19,63 @@
 					"type": "number"
 				}
 			},
-			"required": ["X", "Y"]
+			"required": ["X", "Y"],
+      		"additionalProperties": false
 		},
 		"effective force": {
-			"description": "",
+			"description": "Settings of external forces",
 			"type": "object",
 			"properties": {
 				"Gravity": {
-					"description": "d—Í",
+					"description": "Gravity.",
 					"$ref": "#/definitions/vector2"
 				},
 				"Wind": {
-					"description": "•—ig—p‚µ‚Ä‚¢‚È‚¢j",
+					"description": "Wind.",
 					"$ref": "#/definitions/vector2"
 				}
 			},
-			"required": ["Gravity", "Wind"]
+			"required": ["Gravity", "Wind"],
+      		"additionalProperties": false
 		},
 		"physics dictionary" : {
-			"description": "•¨—‰‰Zİ’è‚ÌID‚Æ–¼‘O‚ğŠÖ˜A•t‚¯‚é",
+			"description": "Related to the name and ID of Physics settings.",
 			"type": "object",
 			"properties": {
 				"Id": {
-					"description": "•¨—‰‰Zİ’è‚ÌIDiƒ‚ƒfƒ‹–ˆ‚Éƒ†ƒj[ƒNj",
+					"description": "Identifier for Physics settings(each model is different).",
 					"type": "string"
 				},
 				"Name": {
-					"description": "•¨—‰‰Zİ’è‚Ì–¼‘OiƒOƒ‹[ƒv–¼j",
+					"description": "Name of Physics settings(group name).",
 					"type": "string"
 				}
-				"required": ["Id", "Name"]
-			}
+			},
+			"required": ["Id", "Name"],
+      		"additionalProperties": false
 		},
 		"normalization value": {
-			"description": "³‹K‰»ˆ—‚Å—˜—p‚·‚é’l‚ğŠi”[",
+			"description": "Normalized values.",
 			"type": "object",
 			"properties": {
 				"Minimum": {
-					"description": "³‹K‰»‚ÌÅ¬’l",
+					"description": "Normalized minimum.",
 					"type": "number"
 				},
 				"Default": {
-					"description": "³‹K‰»”ÍˆÍ‚Ì’†S",
-					"type": "number"
-				}
-				"Maximum": {
-					"description": "³‹K‰»‚ÌÅ‘å’l",
+					"description": "Center of the range of normalization.",
 					"type": "number"
 				},
-				"required": ["Minimum", "Default", "Maximum"]
-			}
+				"Maximum": {
+					"description": "Normalized maximum.",
+					"type": "number"
+				}
+			},
+			"required": ["Minimum", "Default", "Maximum"],
+      		"additionalProperties": false
 		},
 		"parameter" : {
-			"description": "Target parameter of model.",
+			"description": "Targeted parameter of model.",
 			"type": "object",
 			"properties": {
 				"Target": {
@@ -81,148 +85,158 @@
 				"Id": {
 					"description": "Parameter ID.",
 					"type": "string"
-				},
-				"required": ["Target", "Id"]
-			}
+				}
+			},
+			"required": ["Target", "Id"],
+      		"additionalProperties": false
 		},
 		"input": {
-			"description": "“ü—Í",
+			"description": "Input.",
 			"type": "object",
 			"properties": {
 				"Source": {
-					"description": "Target parameter.",
+					"description": "Targeted parameter.",
 					"$ref": "#/definitions/parameter"
 				},
 				"Weight": {
-					"description": "‰e‹¿“x í•Ê–ˆ‚Ì”ä—¦i0`100%j",
+					"description": "Effectiveness:propotion of each typeï¼ˆ0ï½100%ï¼‰.",
 					"type": "number"
 				},
 				"Type": {
-					"description": "í•Ê X or Angle",
+					"description": "Type X or Angle.",
 					"type": "string"
 				},
 				"Reflect": {
-					"description": "”½“]",
+					"description": "Reflect.",
 					"type": "boolean"
-				},
-				"required": ["Source", "Weight", "Type", "Reflect"]
-			}
+				}
+			},
+			"required": ["Source", "Weight", "Type", "Reflect"],
+      		"additionalProperties": false
 		},
 		"output": {
-			"description": "o—Í",
+			"description": "Output.",
 			"type": "object",
 			"properties": {
 				"Destination": {
-					"description": "Target parameter.",
+					"description": "Targeted parameter.",
 					"$ref": "#/definitions/parameter"
 				},
 				"VertexIndex": {
-					"description": "QÆæ‚ÌU‚èqiVertexj‚Ì”Ô†i0 originj",
+					"description": "Numberï¼ˆ0 originï¼‰ of parent pendulumï¼ˆVertexï¼‰.",
 					"type": "number"
 				},
 				"Scale": {
-					"description": "”{—¦",
+					"description": "Scale",
 					"type": "number"
 				},
 				"Weight": {
-					"description": "‰e‹¿“x í•Ê–ˆ‚Ì”ä—¦i0`100%j",
+					"description": "Effectiveness:propotion of each typeï¼ˆ0ï½100%ï¼‰.",
 					"type": "number"
 				},
 				"Type": {
-					"description": "í•Ê X or Angle (Angle ŒÅ’è‚Ì—\’è)",
+					"description": "Type X or Angle (Angle might be fixed)",
 					"type": "string"
 				},
 				"Reflect": {
-					"description": "”½“]",
+					"description": "Reflect",
 					"type": "boolean"
-				},
-				"required": ["Destination", "VertexIndex", "Scale", "Weight", "Type", "Reflect"]
-			}
+				}
+			},
+			"required": ["Destination", "VertexIndex", "Scale", "Weight", "Type", "Reflect"],
+      		"additionalProperties": false
 		},
 		"vertex": {
 			"description": "Single vertex.",
 			"type": "object",
 			"properties": {
 				"Position": {
-					"description": "‰ŠúˆÊ’u",
+					"description": "Default position.",
 					"$ref": "#/definitions/vector2"
 				},
 				"Mobility": {
-					"description": "—h‚ê‚â‚·‚³",
+					"description": "Shaking influence.",
 					"type": "number"
 				},
 				"Delay": {
-					"description": "”½‰‘¬“x",
+					"description": "Reaction time.",
 					"type": "number"
 				},
 				"Acceleration": {
-					"description": "‘S‘Ì‚Ì‘¬“x",
+					"description": "Overall acceleration.",
 					"type": "number"
 				},
 				"Radius": {
-					"description": "’·‚³",
+					"description": "Radius of pendulum.",
 					"type": "number"
 				}
 			},
-			"required": ["Position", "Mobility", "Delay", "Acceleration", "Radius"]
+			"required": ["Position", "Mobility", "Delay", "Acceleration", "Radius"],
+      		"additionalProperties": false
 		}
 	},
-	"PhysicsSettings": {
-		"description": "•¨—‰‰Zİ’è",
-		"type": "object",
-		"properties": {
-			"Id": {
-				"description": "•¨—‰‰Zİ’è‚ÌIDiƒ‚ƒfƒ‹–ˆ‚Éƒ†ƒj[ƒNj",
-				"type": "string"
-			},
-			"Input": {
-				"description": "“ü—Í",
-				"type": "array",
-				"items": {
-					"description": "“ü—Í”z—ñ",
-					"$ref": "#/definitions/input"
-				}
-			},
-			"Output": {
-				"description": "o—Í",
-				"type": "array",
-				"items": {
-					"description": "o—Í”z—ñ",
-					"$ref": "#/definitions/output"
-				}
-			},
-			"Vertices": {
-				"description": "U‚èq‚Ì”z—ñ",
-				"type": "array",
-				"items": {
-					"$ref": "#/definitions/vertex"
-				}
-			},
-			"Normalization": {
-				"description": "“ü—Í’liinputj‚Ì³‹K‰»ˆ—‚Åg—p‚·‚éƒpƒ‰ƒ[ƒ^",
+	"properties": {
+		"PhysicsSettings": {
+			"description": "Physics Settings.",
+			"type": "array",
+			"itmes":{
+				"description": "Physics Settings",
 				"type": "object",
 				"properties": {
-					"Position": {
-						"description": "Normalization value of position.",
-						"$ref": "#/definitions/normalization value"
+					"Id": {
+						"description": "Identifier for Physics settings(each model is different).",
+						"type": "string"
 					},
-					"Angle": {
-						"description": "Normalization value of angle.",
-						"$ref": "#/definitions/normalization value"
+					"Input": {
+						"description": "Input.",
+						"type": "array",
+						"items": {
+							"description": "Array of the input",
+							"$ref": "#/definitions/input"
+						}
+					},
+					"Output": {
+						"description": "Output.",
+						"type": "array",
+						"items": {
+							"description": "Array of the output",
+							"$ref": "#/definitions/output"
+						}
+					},
+					"Vertices": {
+						"description": "Array of the pendulums",
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/vertex"
+						}
+					},
+					"Normalization": {
+						"description": "Parameter(input value normalized).",
+						"type": "object",
+						"properties": {
+							"Position": {
+								"description": "Normalization value of position.",
+								"$ref": "#/definitions/normalization value"
+							},
+							"Angle": {
+								"description": "Normalization value of angle.",
+								"$ref": "#/definitions/normalization value"
+							}
+						},
+						"required": ["Position", "Angle"],
+		      			"additionalProperties": false
 					}
 				},
-				"required": ["Position", "Angle"]
-			}
+				"required": ["Id", "Input", "Vertices", "Output", "Normalization"],
+		      	"additionalProperties": false
+	      	}
 		},
-		"required": ["Id", "Input", "Vertices", "Output", "Normalization"]
-	},
-	"properties": {
 		"Version": {
 			"description": "Json file format version.",
 			"type": "number"
 		},
 		"Meta": {
-			"description": "Additional data describing physics.",
+			"description": "Additional data describing the physics.",
 			"type": "object",
 			"properties": {
 				"PhysicsSettingCount": {
@@ -237,16 +251,16 @@
 					"description": "Total number of output parameters.",
 					"type": "number"
 				},
-				"TotalVertexCount": {
+				"VertexCount": {
 					"description": "Total number of vertices.",
 					"type": "number"
 				},
 				"EffectiveForces": {
-					"description": "d—ÍA•—“™‚Ìİ’è’l",
+					"description": "Settings of gravity and wind.",
 					"$ref": "#/definitions/effective force"
 				},
 				"PhysicsDictionary": {
-					"description": "•¨—‰‰Zİ’èID‚Æ–¼‘O‚Ìˆê——",
+					"description": "List of names and identifiers of Physics setting.",
 					"type": "array",
 					"items": {
 						"description": "",
@@ -254,10 +268,12 @@
 					}
 				}
 			},
-			"required": ["PhysicsSettingCount", "TotalInputCount", "TotalOutputCount", "TotalVertexCount", "EffectiveForces", "PhysicsDictionary"]
+			"required": ["PhysicsSettingCount", "TotalInputCount", "TotalOutputCount", "VertexCount", "EffectiveForces", "PhysicsDictionary"],
+      		"additionalProperties": false
 		}
 	},
-	"required": ["Version", "Meta", "PhysicsSettings"]
+	"required": ["Version", "Meta", "PhysicsSettings"],
+    "additionalProperties": false
 }
 ```
 
@@ -265,7 +281,9 @@
 
 ## Description
 
-* Cubism Editor 3.0.10i2017/08/17 ƒŠƒŠ[ƒX—\’èj ‚Å‘Î‰—\’è
+Make physics3.json http://docs.live2d.com/cubism-editor-manual/physical-operation-setting/
+
+Use physics3.json http://docs.live2d.com/cubism-sdk-manual/physics/
 
 ---
 
@@ -292,11 +310,11 @@
 		"PhysicsDictionary": [
 			{
 				"Id": "PhysicsSetting1",
-				"Name": "”¯—h‚ê@¶"
+				"Name": "é«ªæºã‚Œã€€å·¦"
 			},
 			{
 				"Id": "PhysicsSetting2",
-				"Name": "”¯—h‚ê@‰E"
+				"Name": "é«ªæºã‚Œã€€å³"
 			}
 		]
 	},
