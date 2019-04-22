@@ -103,6 +103,10 @@
           "description": "[Optional] Relative path to the pose3.json file.",
           "type": "string"
         },
+        "DisplayInfo": {
+          "description": "[Optional] Relative path to the cdi3.json file.",
+          "type": "string"
+        },
         "Expressions": {
           "description": "[Optional] Relative path to the exp3.json file.",
           "type": "array",
