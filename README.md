@@ -2,7 +2,7 @@
 
 This repository contains various Cubism related specifications.
 
-## Verify Json of Cubism 3 specification with Json schema
+## Verify Json of Cubism specification with Json schema
 
 checkscript.py checks whether Json of the target folder matches the schema.
 
