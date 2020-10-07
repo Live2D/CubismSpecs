@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Cubism motion.3json File Format",
+  "type": "object",
+  "definitions": {
+    "curve": {
+      "description": "Single curve.",
+      "type": "object",
+      "properties": {
+        "Target": {
+          "description": "Target type.",
+          "type": "string"
+        },
+        "Id": {
+          "description": "Identifier for mapping curve to target.",
+          "type": "string"
+        },
+        "FadeInTime": {
+          "description": "[Optional] Time of the Fade-In for easing in seconds.",
+          "type": "number"
+        },
+        "FadeOutTime": {
+          "description": "[Optional] Time of the Fade-Out for easing in seconds.",
+          "type": "number"
+        },
+        "Segments": {
+          "description": "Flattened segments.",
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": ["Target", "Id", "Segments"],
+      "additionalProperties": false
+    },
+    "userData": {
+      "description": "User data.",
+      "type": "object",
+      "properties": {
+        "Time": {
+          "description": "Time in seconds.",
+          "type": "number"
+        },
+        "Value": {
+          "description": "Content of user data.",
+          "type": "string"
+        }
+      },
+      "required": ["Time", "Value"],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "Version": {
+      "description": "Json file format version.",
+      "type": "number"
+    },
+    "Meta": {
+      "description": "Additional data describing the motion.",
+      "type": "object",
+      "properties": {
+        "Duration": {
+          "description": "Duration of the motion in seconds.",
+          "type": "number"
+        },
+        "Fps": {
+          "description": "Framerate of the motion in seconds.",
+          "type": "number"
+        },
+        "Loop": {
+          "description": "[Optional] Status of the looping of the motion.",
+          "type": "boolean"
+        },
+        "AreBeziersRestricted": {
+          "description": "[Optional] Status of the restriction of Bezier handles'X translations.",
+          "type": "boolean"
+        },
+        "FadeInTime": {
+          "description": "[Optional] Time of the overall Fade-In for easing in seconds.",
+          "type": "number"
+        },
+        "FadeOutTime": {
+          "description": "[Optional] Time of the overall Fade-Out for easing in seconds.",
+          "type": "number"
+        },
+        "CurveCount": {
+          "description": "The total number of curves.",
+          "type": "number"
+        },
+        "TotalSegmentCount": {
+          "description": "The total number of segments (from all curves).",
+          "type": "number"
+        },
+        "TotalPointCount": {
+          "description": "The total number of points (from all segments of all curves).",
+          "type": "number"
+        },
+        "UserDataCount": {
+          "description": "[Optional] The total number of UserData.",
+          "type": "number"
+        },
+        "TotalUserDataSize": {
+          "description": "[Optional] The total size of UserData in bytes.",
+          "type": "number"
+        }
+      },
+      "required": [
+        "Duration",
+        "Fps",
+        "CurveCount",
+        "TotalSegmentCount",
+        "TotalPointCount"
+      ],
+      "additionalProperties": false
+    },
+    "Curves": {
+      "description": "Motion curves.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/curve"
+      }
+    },
+    "UserData": {
+      "description": "[Optional] User data.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/userData"
+      }
+    }
+  },
+  "required": ["Version", "Meta", "Curves"],
+  "additionalProperties": false
+}

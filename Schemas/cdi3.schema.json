@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Cubism cdi3.json File Format",
+  "type": "object",
+  "definitions": {
+    "Version": {
+      "description": "Json file format version.",
+      "type": "number"
+    },
+    "Parameters": {
+      "description": "All Parameters.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the parameter.",
+          "type": "string"
+        },
+        "GroupId": {
+          "description": "Identifier for the parent group of the parameter.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the parameter.",
+          "type": "string"
+        }
+      }
+    },
+    "ParameterGroups": {
+      "description": "All ParameterGroups.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the parameter group.",
+          "type": "string"
+        },
+        "GroupId": {
+          "description": "Identifier for the parent group of the parameter group.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the parameter group.",
+          "type": "string"
+        }
+      }
+    },
+    "Parts": {
+      "description": "All Parts.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the part.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the part.",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

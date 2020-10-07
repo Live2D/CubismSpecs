@@ -2,53 +2,7 @@
 
 ## Json Schema
 
-```json
-{
-    "$schema": "http://json-schema.org/schema#",
-    "title": "Cubism exp3.json File Format",
-    "type":"object",
-    "properties":
-    {
-        "Type":
-         {
-            "description":"Json file format type.",
-            "type":"string",
-            "enum": ["Live2D Expression"]
-        },
-        "FadeIn":
-         {
-            "description":"[Optional] Time of the Fade-In for easing in seconds.",
-            "type":"number",
-            "minimum":0
-        },
-        "FadeOut":
-         {
-            "description":"[Optional] Time of the Fade-Out for easing in seconds.",
-            "type":"number",
-            "minimum":0
-        },
-        "Parameters":
-         {
-            "type":"array",
-            "items":
-              {
-                "description":"Targeted parameter list.",
-                "type":"object",
-                "properties":
-                  {
-                    "Id":{"type":"string"},
-                    "Value":{"type":"number"},
-                    "Blend":{"type":"string","enum":["Add","Multiply","Overwrite"]}
-                },
-                "required": ["Id", "Value"],
-                "additionalProperties": false
-            }
-        }
-    },
-    "required": ["Type", "Parameters"],
-    "additionalProperties": false
-}
-```
+Refer [/Schemas/exp3.schema.json](/Schemas/exp3.schema.json).
 
 ---
 

@@ -1,0 +1,11 @@
+*
+*/
+!/FileFormats
+!/FileFormats/*.md
+!/Schemas
+!/Schemas/*.json
+!/.editorconfig
+!/.gitattributes
+!/.gitignore
+!/checkscript.py
+!/README.md

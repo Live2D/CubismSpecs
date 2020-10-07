@@ -2,53 +2,7 @@
 
 ## Json Schema
 
-```json
-{
-    "$schema": "http://json-schema.org/schema#",
-    "title": "Cubism pose3.json File Format",
-    "type":"object",
-    "properties": {
-        "Type":{
-          "description":"",
-          "type":"string",
-          "enum": ["Live2D Pose"]
-        },
-        "FadeInTime": {
-            "description":"Time of the Fade-In for easing in seconds.",
-            "type":"number"
-        },
-        "Groups": {
-            "description": "List of the switching control groups.",
-            "type":"array",
-            "items":{
-                "description": "Switching control group.",
-                "type":"array",
-                "items": {
-                    "description": "Switching control node.",
-                    "type": "object",
-                    "properties": {
-                        "Id":{
-                            "description": "Main switching Part ID.",
-                            "type":"string"
-                        },  
-                        "Link":{
-                            "description": "List of the linked switching Part IDs.",
-                            "type":"array", 
-                            "items":{
-                               "type":"string"
-                            } 
-                        }
-                    },
-                    "required": [ "Id" ],
-                    "additionalProperties": false
-                }
-            }
-        }
-    },
-    "required": [ "Type", "Groups"],
-    "additionalProperties": false
-}
-```
+Refer [/Schemas/pose3.schema.json](/Schemas/pose3.schema.json).
 
 ---
 
