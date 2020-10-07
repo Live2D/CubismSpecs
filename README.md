@@ -4,8 +4,18 @@ This repository contains various Cubism related specifications.
 
 ## Verify Json of Cubism specification with Json schema
 
-checkscript.py checks whether Json of the target folder matches the schema.
+`checkscript.py` checks whether Json of the target folder matches the schema.
 
-Need Python2.7 and install jsonschema
+### Requirements
 
-Please extract *.json.schema from *.json.md and put it in the same folder as the script and let it operate 
+* Python 3.4+
+* jsonschema (install from pip)
+
+### Usage
+
+```txt
+usage: python checkscript.py [path]
+
+Optionally specify the directory path for checking.
+Default path is current directory.
+```
