@@ -1,10 +1,7 @@
 # userdata3.json File Format Specifications
 
-## Json Schema
-
-Refer [/Schemas/userdata3.schema.json](/Schemas/userdata3.schema.json).
-
----
+- [Json Schema](/Schemas/userdata3.schema.json)
+- [Example Json](/Examples/example.userdata3.json)
 
 ## Description
 
@@ -15,36 +12,5 @@ Refer [/Schemas/userdata3.schema.json](/Schemas/userdata3.schema.json).
 One of the following:
 
 | Target | Description |
-| - | - |
-| "ArtMesh" | User data targets a ArtMesh. The user data ID then is the ArtMesh ID. |
-
----
-
-## Json Example
-
-```json
-{
-  "Version": 3,
-  "Meta": {
-    "UserDataCount": 3,
-    "TotalUserDataSize": 12
-  },
-  "UserData": [
-    {
-      "Target": "ArtMesh",
-      "Id": "ArtMeshArm01",
-      "Value": "hoge"
-    },
-    {
-      "Target": "ArtMesh",
-      "Id": "ArtMeshEye01",
-      "Value": "fuga"
-    },
-    {
-      "Target": "ArtMesh",
-      "Id": "ArtMeshEye02",
-      "Value": "piyo"
-    }
-  ]
-}
-```
+| --- | --- |
+| `ArtMesh` | User data targets a ArtMesh. The user data ID then is the ArtMesh ID. |

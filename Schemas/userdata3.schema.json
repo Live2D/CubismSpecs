@@ -1,6 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism userdata3.json File Format",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/userdata3.schema.json",
+  "title": "userdata3",
+  "description": "Cubism userdata3.json File Format",
   "type": "object",
   "definitions": {
     "userData": {

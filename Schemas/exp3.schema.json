@@ -1,6 +1,24 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism exp3.json File Format",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/exp3.schema.json",
+  "title": "exp3",
+  "description": "Cubism exp3.json File Format",
+  "definitions": {
+    "parameter": {
+      "description": "Parameter data.",
+      "type": "object",
+      "properties": {
+        "Id": { "type": "string" },
+        "Value": { "type": "number" },
+        "Blend": {
+          "type": "string",
+          "enum": ["Add", "Multiply", "Overwrite"]
+        }
+      },
+      "required": ["Id", "Value", "Blend"],
+      "additionalProperties": false
+    }
+  },
   "type": "object",
   "properties": {
     "Type": {
@@ -19,20 +37,10 @@
       "minimum": 0
     },
     "Parameters": {
+      "description": "Targeted parameter list.",
       "type": "array",
       "items": {
-        "description": "Targeted parameter list.",
-        "type": "object",
-        "properties": {
-          "Id": { "type": "string" },
-          "Value": { "type": "number" },
-          "Blend": {
-            "type": "string",
-            "enum": ["Add", "Multiply", "Overwrite"]
-          }
-        },
-        "required": ["Id", "Value"],
-        "additionalProperties": false
+        "$ref": "#/definitions/parameter"
       }
     }
   },

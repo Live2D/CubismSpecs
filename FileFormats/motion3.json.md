@@ -1,10 +1,7 @@
 # motion3.json File Format Specifications
 
-## Json Schema
-
-Refer [/Schemas/motion3.schema.json](/Schemas/motion3.schema.json).
-
----
+- [Json Schema](/Schemas/motion3.schema.json)
+- [Example Json](/Examples/example.motion3.json)
 
 ## Description
 
@@ -15,20 +12,20 @@ Refer [/Schemas/motion3.schema.json](/Schemas/motion3.schema.json).
 One of the following:
 
 | Target | Description |
-| - | - |
-| "Model" | Track targets model. |
-| "Parameter" | Track targets a parameter. The track ID then is the parameter ID. |
-| "PartOpacity" | Track targets a part opacity. The track ID then is the parts ID. |
+| --- | --- |
+| `Model` | Track targets model. |
+| `Parameter` | Track targets a parameter. The track ID then is the parameter ID. |
+| `PartOpacity` | Track targets a part opacity. The track ID then is the parts ID. |
 
 ##### Model Target Identifiers
 
 One of the following:
 
 | Id | Description |
-| - | - |
-| "Opacity" | Opacity track applying to the model as a whole. |
-| "EyeBlink" | Eye track. |
-| "LipSync" | Mouth opening track. |
+| --- | --- |
+| `Opacity` | Opacity track applying to the model as a whole. |
+| `EyeBlink` | Eye track. |
+| `LipSync` | Mouth opening track. |
 
 #### Track Curves
 
@@ -40,11 +37,11 @@ hereinafter simply t, and *the second number its value at t*.
 A segment identifier is single number with one of the following values.
 
 | Value | Description |
-| - | - |
-| 0 | Identifier for linear segment. |
-| 1 | Identifier for cubic bézier segment. |
-| 2 | Identifier for stepped segment |
-| 3 | Identifier for inverse-stepped segment. |
+| --- | --- |
+| `0` | Identifier for linear segment. |
+| `1` | Identifier for cubic bézier segment. |
+| `2` | Identifier for stepped segment |
+| `3` | Identifier for inverse-stepped segment. |
 
 *Each curve starts with the first point followed by the segment identifier*.
 Therefore, *the first segment identifier is the third number in the flat segments array*.
@@ -61,53 +58,3 @@ P2.t = ((P3.t - P0.t) / 3) * 2
 ```
 
 Curves can't be empty.
-
----
-
-## Json Example
-
-```json
-{
-  "Version": 3,
-  "Meta": {
-    "Duration": 1,
-    "Fps": 120,
-    "FadeInTime": 2,
-    "FadeOutTime": 2,
-    "CurveCount": 3,
-    "TotalSegmentCount": 3,
-    "TotalPointCount": 6,
-    "UserDataCount": 2,
-    "TotalUserDataSize": 8
-  },
-  "UserData": [
-    {
-      "Time": 1.234,
-      "Value": "hoge"
-    },
-    {
-      "Time": 5.612,
-      "Value": "fuga"
-    }
-  ],
-  "Curves": [
-    {
-      "Target": "Model",
-      "Id": "Opacity",
-      "Segments": [0, 0, 0, 1, 1]
-    },
-    {
-      "Target": "Parameter",
-      "Id": "EyeLOpen",
-      "Segments": [0, 0, 0, 1, 1]
-    },
-    {
-      "Target": "PartOpacity",
-      "Id": "ArmL",
-      "FadeInTime": 2,
-      "FadeOutTime": 2,
-      "Segments": [0, 0, 0, 1, 1]
-    }
-  ]
-}
-```

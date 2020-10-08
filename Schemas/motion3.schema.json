@@ -1,6 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism motion.3json File Format",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/motion3.schema.json",
+  "title": "motion3",
+  "description": "Cubism motion3.json File Format",
   "type": "object",
   "definitions": {
     "curve": {

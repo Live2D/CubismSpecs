@@ -1,7 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism model.3json File Format",
-  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/model3.schema.json",
+  "title": "model3",
+  "description": "Cubism model3.json File Format",
   "definitions": {
     "group": {
       "description": "Group entry.",
@@ -25,7 +26,7 @@
       "required": ["Target", "Name", "Ids"],
       "additionalProperties": false
     },
-    "hitareas": {
+    "hitAreas": {
       "description": "Collision detection.",
       "type": "object",
       "properties": {
@@ -66,6 +67,7 @@
       "additionalProperties": false
     }
   },
+  "type": "object",
   "properties": {
     "Version": {
       "description": "Json file format version.",
@@ -140,14 +142,14 @@
       }
     },
     "HitAreas": {
-      "description": "[Optional]Collision detection",
+      "description": "[Optional] Collision detection",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/hitareas"
+        "$ref": "#/definitions/hitAreas"
       }
     },
     "Layout": {
-      "description": "[Optional]Layout",
+      "description": "[Optional] Layout",
       "type": "object",
       "properties": {
         "width": { "type": "number" },

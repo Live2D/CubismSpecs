@@ -1,6 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism physics3.json File Format",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/physics3.schema.json",
+  "title": "physics3",
+  "description": "Cubism physics3.json File Format",
   "type": "object",
   "definitions": {
     "vector2": {
@@ -17,7 +19,7 @@
       "required": ["X", "Y"],
       "additionalProperties": false
     },
-    "effective force": {
+    "effectiveForce": {
       "description": "Settings of external forces",
       "type": "object",
       "properties": {
@@ -94,7 +96,7 @@
           "$ref": "#/definitions/parameter"
         },
         "Weight": {
-          "description": "Effectiveness:propotion of each type（0～100%）.",
+          "description": "Effectiveness:proportion of each type（0～100%）.",
           "type": "number"
         },
         "Type": {
@@ -126,7 +128,7 @@
           "type": "number"
         },
         "Weight": {
-          "description": "Effectiveness:propotion of each type（0～100%）.",
+          "description": "Effectiveness:proportion of each type（0～100%）.",
           "type": "number"
         },
         "Type": {
@@ -181,7 +183,7 @@
     "PhysicsSettings": {
       "description": "Physics Settings.",
       "type": "array",
-      "itmes": {
+      "items": {
         "description": "Physics Settings",
         "type": "object",
         "properties": {
@@ -259,7 +261,7 @@
         },
         "EffectiveForces": {
           "description": "Settings of gravity and wind.",
-          "$ref": "#/definitions/effective force"
+          "$ref": "#/definitions/effectiveForce"
         },
         "PhysicsDictionary": {
           "description": "List of names and identifiers of Physics setting.",

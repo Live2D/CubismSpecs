@@ -1,0 +1,52 @@
+{
+  "Version": 3,
+  "Parameters": [
+    {
+      "Id": "ParamAngleX",
+      "GroupId": "ParamGroupHead",
+      "Name": "Angle X"
+    },
+    {
+      "Id": "ParamAngleY",
+      "GroupId": "ParamGroupHead",
+      "Name": "Angle Y"
+    },
+    {
+      "Id": "ParamEyeBall",
+      "GroupId": "ParameterGroupEye",
+      "Name": "EyeBall"
+    },
+    {
+      "Id": "ParamHair",
+      "GroupId": "ParamGroupHead",
+      "Name": "Hair"
+    },
+    {
+      "Id": "ParamBody",
+      "GroupId": "",
+      "Name": "Body"
+    }
+  ],
+  "ParameterGroups": [
+    {
+      "Id": "ParamGroupHead",
+      "GroupId": "",
+      "Name": "Head"
+    },
+    {
+      "Id": "ParameterGroupEye",
+      "GroupId": "ParamGroupHead",
+      "Name": "Eye"
+    }
+  ],
+  "Parts": [
+    {
+      "Id": "PartArmR",
+      "Name": "Right Arm"
+    },
+    {
+      "Id": "PartMouth",
+      "Name": "Mouth"
+    }
+  ]
+}
