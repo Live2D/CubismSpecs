@@ -8,4 +8,4 @@
 !/.gitattributes
 !/.gitignore
 !/checkscript.py
-!/README.md
+!/README.adoc
