@@ -1,33 +1,41 @@
-# motion3.json File Format Specifications
+= motion3.json File Format Specifications
 
-- [Json Schema](/Schemas/motion3.schema.json)
-- [Example Json](/Examples/example.motion3.json)
+== JSON Schema
 
-## Description
+[source,json]
+----
+include::schema.json[]
+----
 
-### Tracks
+== Description
 
-#### Track Targets
+=== Tracks
 
-One of the following:
-
-| Target | Description |
-| --- | --- |
-| `Model` | Track targets model. |
-| `Parameter` | Track targets a parameter. The track ID then is the parameter ID. |
-| `PartOpacity` | Track targets a part opacity. The track ID then is the parts ID. |
-
-##### Model Target Identifiers
+==== Track Targets
 
 One of the following:
 
-| Id | Description |
-| --- | --- |
-| `Opacity` | Opacity track applying to the model as a whole. |
-| `EyeBlink` | Eye track. |
-| `LipSync` | Mouth opening track. |
+[%header%autowidth]
+|===
+| Target | Description
+| `Model` | Track targets model.
+| `Parameter` | Track targets a parameter. The track ID then is the parameter ID.
+| `PartOpacity` | Track targets a part opacity. The track ID then is the parts ID.
+|===
 
-#### Track Curves
+===== Model Target Identifiers
+
+One of the following:
+
+[%header%autowidth]
+|===
+| Id | Description
+| `Opacity` | Opacity track applying to the model as a whole.
+| `EyeBlink` | Eye track.
+| `LipSync` | Mouth opening track.
+|===
+
+==== Track Curves
 
 Curves are made up of points and segment identifiers packed into a single flat array.
 
@@ -36,12 +44,14 @@ hereinafter simply t, and *the second number its value at t*.
 
 A segment identifier is single number with one of the following values.
 
-| Value | Description |
-| --- | --- |
-| `0` | Identifier for linear segment. |
-| `1` | Identifier for cubic bézier segment. |
-| `2` | Identifier for stepped segment |
-| `3` | Identifier for inverse-stepped segment. |
+[%header%autowidth]
+|===
+| Value | Description
+| `0` | Identifier for linear segment.
+| `1` | Identifier for cubic bézier segment.
+| `2` | Identifier for stepped segment.
+| `3` | Identifier for inverse-stepped segment.
+|===
 
 *Each curve starts with the first point followed by the segment identifier*.
 Therefore, *the first segment identifier is the third number in the flat segments array*.
@@ -52,9 +62,17 @@ that represents the end of the segment, or *3 point in case of bézier segments*
 
 The t components of bézier control points are proportionally fixed as follows.
 
-```math
+[source,math]
+----
 P1.t = (P3.t - P0.t) / 3
 P2.t = ((P3.t - P0.t) / 3) * 2
-```
+----
 
 Curves can't be empty.
+
+== JSON Example
+
+[source,json]
+----
+include::example.motion3.json[]
+----

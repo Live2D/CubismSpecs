@@ -1,0 +1,40 @@
+= model3.json File Format Specifications
+
+== JSON Schema
+
+[source,json]
+----
+include::schema.json[]
+----
+
+== Description
+
+=== Groups
+
+==== Group Targets
+
+One of the following:
+
+[%header%autowidth]
+|===
+| Target | Description
+| `Parameter` | Group targets parameter. The group IDs then are parameter IDs.
+|===
+
+===== Parameter Target Names
+
+One of the following:
+
+[%header%autowidth]
+|===
+| Id | Description
+| `EyeBlink` | Eye blink parameters group.
+| `LipSync` | Mouth opening parameters group.
+|===
+
+== JSON Example
+
+[source,json]
+----
+include::example.model3.json[]
+----

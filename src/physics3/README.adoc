@@ -1,0 +1,21 @@
+= physics3.json File Format Specifications
+
+== JSON Schema
+
+[source,json]
+----
+include::schema.json[]
+----
+
+== Description
+
+Make physics3.json <http://docs.live2d.com/cubism-editor-manual/physical-operation-setting/>
+
+Use physics3.json <http://docs.live2d.com/cubism-sdk-manual/physics/>
+
+== JSON Example
+
+[source,json]
+----
+include::example.physics3.json[]
+----

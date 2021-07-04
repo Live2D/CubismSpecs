@@ -1,11 +1,9 @@
-*
-*/
-!/Examples
-!/Examples/*.json
-!/FileFormats
-!/FileFormats/*.md
-!/Schemas
-!/Schemas/*.json
+**
+**/
+!/src/
+!/src/**/
+!/src/**/*.adoc
+!/src/**/*.json
 !/.editorconfig
 !/.gitattributes
 !/.gitignore
