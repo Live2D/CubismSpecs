@@ -1,0 +1,24 @@
+{
+  "Version": 3,
+  "Meta": {
+    "UserDataCount": 3,
+    "TotalUserDataSize": 12
+  },
+  "UserData": [
+    {
+      "Target": "ArtMesh",
+      "Id": "ArtMeshArm01",
+      "Value": "hoge"
+    },
+    {
+      "Target": "ArtMesh",
+      "Id": "ArtMeshEye01",
+      "Value": "fuga"
+    },
+    {
+      "Target": "ArtMesh",
+      "Id": "ArtMeshEye02",
+      "Value": "piyo"
+    }
+  ]
+}

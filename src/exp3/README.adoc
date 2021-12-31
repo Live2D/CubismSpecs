@@ -1,0 +1,31 @@
+= exp3.json File Format Specifications
+
+== JSON Schema
+
+[source,json]
+----
+include::schema.json[]
+----
+
+== Description
+
+=== Parameters
+
+exp3.json targets only the parameters of the model.
+
+==== Blend
+
+[%header%autowidth]
+|===
+| Type | Description | Value
+| `Add` | Add to the original value of the parameter | `Value = SettingValue - DefaultValue`
+| `Multiply` | Multiply the original value of the parameter | `Value = SettingValue`
+| `Overwrite` | Overwrite parameters | `Value = SettingValue`
+|===
+
+== JSON Example
+
+[source,json]
+----
+include::example.exp3.json[]
+----

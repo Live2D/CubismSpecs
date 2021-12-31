@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/cdi3.schema.json",
+  "title": "cdi3",
+  "description": "Cubism cdi3.json File Format",
+  "definitions": {
+    "parameter": {
+      "description": "Parameter data.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the parameter.",
+          "type": "string"
+        },
+        "GroupId": {
+          "description": "Identifier for the parent group of the parameter.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the parameter.",
+          "type": "string"
+        }
+      },
+      "required": ["Id", "GroupId", "Name"],
+      "additionalProperties": false
+    },
+    "parameterGroup": {
+      "description": "Parameter group data.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the parameter group.",
+          "type": "string"
+        },
+        "GroupId": {
+          "description": "Identifier for the parent group of the parameter group.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the parameter group.",
+          "type": "string"
+        }
+      },
+      "required": ["Id", "GroupId", "Name"],
+      "additionalProperties": false
+    },
+    "part": {
+      "description": "Part data.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the part.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the part.",
+          "type": "string"
+        }
+      },
+      "required": ["Id", "Name"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Version": {
+      "description": "Json file format version.",
+      "type": "number"
+    },
+    "Parameters": {
+      "description": "All Parameters.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/parameter"
+      }
+    },
+    "ParameterGroups": {
+      "description": "All ParameterGroups.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/parameterGroup"
+      }
+    },
+    "Parts": {
+      "description": "All Parts.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/part"
+      }
+    }
+  },
+  "required": ["Version", "Parameters", "Parts"],
+  "additionalProperties": false
+}

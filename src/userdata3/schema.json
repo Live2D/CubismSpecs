@@ -1,11 +1,8 @@
-# userdata3.json File Format Specifications
-
-## Json Schema
-
-```json
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism userdata3.json File Format",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/userdata3.schema.json",
+  "title": "userdata3",
+  "description": "Cubism userdata3.json File Format",
   "type": "object",
   "definitions": {
     "userData": {
@@ -28,7 +25,7 @@
       "required": ["Target", "Id", "Value"],
       "additionalProperties": false
     }
-   },
+  },
   "properties": {
     "Version": {
       "description": "Json file format version.",
@@ -56,54 +53,8 @@
       "items": {
         "$ref": "#/definitions/userData"
       }
-    }    
+    }
   },
   "required": ["Version", "Meta", "UserData"],
   "additionalProperties": false
 }
-```
-
----
-
-## Description
-
-### UserData
-
-#### UserData Target Identifiers
-
-One of the following:
-
-| Target | Description |
-| - | - |
-| "ArtMesh" | User data targets a ArtMesh. The user data ID then is the ArtMesh ID. |
-
----
-
-## Json Example
-
-```json
-{
-	"Version": 3,
-	"Meta": {
-		"UserDataCount": 3,
-		"TotalUserDataSize": 12
-	},
-	"UserData": [
-		{
-			"Target": "ArtMesh",
-			"Id": "ArtMeshArm01",
-			"Value": "hoge"
-		},
-		{
-			"Target": "ArtMesh",
-			"Id": "ArtMeshEye01",
-			"Value": "fuga"
-		},
-		{
-			"Target": "ArtMesh",
-			"Id": "ArtMeshEye02",
-			"Value": "piyo"
-		}
-	]
-}
-```

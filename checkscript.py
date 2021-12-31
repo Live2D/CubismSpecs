@@ -1,42 +1,58 @@
-import jsonschema
-import os
 import json
-import re
+import sys
+from pathlib import Path
 
-def find_all_files(directory):
-    for root, dirs, files in os.walk(directory):
-        yield root
-        for file in files:
-            yield os.path.join(root, file)
+from jsonschema import Draft7Validator, validate
 
-def schema_check(filetype,schemafilne,targetdir):
-    print filetype + " checks"
+
+class Label:
+    """Class for defining string decorations"""
+    PASS = '\033[1m\033[48;2;56;142;60m PASS \033[0m'
+    FAIL = '\033[1m\033[48;2;211;47;47m FAIL \033[0m'
+
+
+def schema_check(extension, script_dir, target_dir):
+    """Validate the json schema of a specified target file"""
+    print(f'\n> {extension}.json: checks\n')
+
     try:
-        schema = json.load(open(schemafilne,"r"))
-        jsonschema.Draft4Validator.check_schema(schema)
-    except Exception, e :
-        print e.message
-    for file in find_all_files(targetdir):
-        if re.search(filetype+"$",file) :
-            try:
-                jdata = json.load(open(file,"r"))
-                jsonschema.validate(jdata,schema)
-                print file + " OK"
-            except Exception,e:
-                print file + " Error"
-                print e.message
+        # Load and validate json schema file.
+        schema_file = script_dir / 'Schemas' / f'{extension}.schema.json'
+        schema_json = json.load(open(schema_file, 'r'))
+        Draft7Validator.check_schema(schema_json)
+    except Exception as e:
+        print(f'{Label.FAIL} "{extension}.schema.json" is invalid!')
+        print(f'\n\t{e.message if hasattr(e, "message") else e}\n')
+        return
 
-def filename_check_2(targetdir):
-    print "filetypecheck start" + targetdir
-    for file in find_all_files(targetdir):
-        if re.search(r"\.(txt|md)$",file) :
-            print file
-    print "filetypecheck end"
+    # Validate each json files.
+    target_files = target_dir.glob(f'**/*.{extension}.json')
+    for target_file in list(target_files):
+        try:
+            target_json = json.load(open(target_file, 'r'))
+            validate(target_json, schema_json)
+            print(f'{Label.PASS} {target_file}')
+        except Exception as e:
+            print(f'{Label.FAIL} {target_file}')
+            print(f'\n\t{e.message if hasattr(e, "message") else e}\n')
 
-tagetdir = "./"
-schema_check("model3.json","model3.json.schema",tagetdir)
-schema_check("motion3.json","motion3.json.schema",tagetdir)
-schema_check("physics3.json","physics3.json.schema",tagetdir)
-schema_check("userdata3.json","userdata3.json.schema",tagetdir)
-schema_check("exp3.json","exp3.json.schema",tagetdir)
-schema_check("pose3.json","pose3.json.schema",tagetdir)
+
+def main():
+    script_dir = Path(__file__).parent
+    # If no directory is defined in the argument, use the current directory.
+    if len(sys.argv) > 1:
+        target_dir = Path(sys.argv[1])
+    else:
+        target_dir = Path('.')
+
+    # Extract valid extensions from schema files.
+    schema_files = list((script_dir / 'Schemas').iterdir())
+    extensions = [s.name.replace('.schema.json', '') for s in schema_files]
+
+    # Validate json schema in each extension.
+    for e in extensions:
+        schema_check(e, script_dir, target_dir)
+
+
+if __name__ == '__main__':
+    main()

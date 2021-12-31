@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/pose3.schema.json",
+  "title": "pose3",
+  "description": "Cubism pose3.json File Format",
+  "definitions": {
+    "node": {
+      "description": "Switching control node.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Main switching Part ID.",
+          "type": "string"
+        },
+        "Link": {
+          "description": "List of the linked switching Part IDs.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["Id", "Link"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Type": {
+      "description": "Json file format type.",
+      "type": "string",
+      "enum": ["Live2D Pose"]
+    },
+    "FadeInTime": {
+      "description": "Time of the Fade-In for easing in seconds.",
+      "type": "number"
+    },
+    "Groups": {
+      "description": "List of the switching control groups.",
+      "type": "array",
+      "items": {
+        "description": "Switching control group.",
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/node"
+        }
+      }
+    }
+  },
+  "required": ["Type", "Groups"],
+  "additionalProperties": false
+}

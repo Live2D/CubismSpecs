@@ -1,0 +1,29 @@
+= userdata3.json File Format Specifications
+
+== JSON Schema
+
+[source,json]
+----
+include::schema.json[]
+----
+
+== Description
+
+=== UserData
+
+==== UserData Target Identifiers
+
+One of the following:
+
+[%header%autowidth]
+|===
+| Target | Description
+| `ArtMesh` | User data targets a ArtMesh. The user data ID then is the ArtMesh ID.
+|===
+
+== JSON Example
+
+[source,json]
+----
+include::example.userdata3.json[]
+----

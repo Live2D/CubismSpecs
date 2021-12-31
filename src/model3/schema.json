@@ -1,12 +1,8 @@
-# model3.json File Format Specifications
-
-## Json Schema
-
-```json
 {
-  "$schema": "http://json-schema.org/schema#",
-  "title": "Cubism model.3json File Format",
-  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Live2D/CubismSpecs/master/Schemas/model3.schema.json",
+  "title": "model3",
+  "description": "Cubism model3.json File Format",
   "definitions": {
     "group": {
       "description": "Group entry.",
@@ -30,7 +26,7 @@
       "required": ["Target", "Name", "Ids"],
       "additionalProperties": false
     },
-    "hitareas": {
+    "hitAreas": {
       "description": "Collision detection.",
       "type": "object",
       "properties": {
@@ -70,13 +66,14 @@
       "required": ["File"],
       "additionalProperties": false
     }
-   },
+  },
+  "type": "object",
   "properties": {
     "Version": {
       "description": "Json file format version.",
       "type": "number"
     },
-    "FileReferences":  {
+    "FileReferences": {
       "description": "Relative paths from the model3.json to other files.",
       "type": "object",
       "properties": {
@@ -110,12 +107,11 @@
         "Expressions": {
           "description": "[Optional] Relative path to the exp3.json file.",
           "type": "array",
-          "items":{
-            "type":"object",
-            "properties":
-            {
-              "Name":{"type":"string"},
-              "File":{"type":"string"}
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": { "type": "string" },
+              "File": { "type": "string" }
             },
             "required": ["Name", "File"],
             "additionalProperties": false
@@ -124,12 +120,10 @@
         "Motions": {
           "description": "[Optional] Relative path to the motion3.json file.",
           "type": "object",
-          "patternProperties":
-          {
-            ".+":
-            {
+          "patternProperties": {
+            ".+": {
               "type": "array",
-              "items":{
+              "items": {
                 "$ref": "#/definitions/motion"
               }
             }
@@ -148,26 +142,26 @@
       }
     },
     "HitAreas": {
-      "description": "[Optional]Collision detection",
+      "description": "[Optional] Collision detection",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/hitareas"
+        "$ref": "#/definitions/hitAreas"
       }
     },
     "Layout": {
-      "description": "[Optional]Layout",
+      "description": "[Optional] Layout",
       "type": "object",
-      "properties":{
-        "width" : { "type": "number" },
-        "height" : { "type": "number" },
-        "x" : { "type": "number" },
-        "y" : { "type": "number" },
-        "center_x" : { "type": "number" },
-        "center_y" : { "type": "number" },
-        "top" : { "type": "number" },
-        "bottom" : { "type": "number" },
-        "left" : { "type": "number" },
-        "right" : { "type": "number" }
+      "properties": {
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "center_x": { "type": "number" },
+        "center_y": { "type": "number" },
+        "top": { "type": "number" },
+        "bottom": { "type": "number" },
+        "left": { "type": "number" },
+        "right": { "type": "number" }
       },
       "additionalProperties": false
     }
@@ -175,55 +169,3 @@
   "required": ["Version", "FileReferences"],
   "additionalProperties": false
 }
-```
-
----
-
-## Description
-
-### Groups
-
-#### Group Targets
-
-One of the following:
-
-| Target | Description |
-| - | - |
-| "Parameter" | Group targets parameter. The group IDs then are parameter IDs. |
-
-##### Parameter Target Names
-
-One of the following:
-
-| Id | Description |
-| - | - |
-| "EyeBlink" | Eye blink parameters group. |
-| "LipSync" | Mouth opening parameters group. |
-
----
-
-## Json Example
-
-```json
-{
-  "Version": 3,
-  "FileReferences": {
-    "Moc": "Sample.moc3",
-    "Textures": [
-      "Sample.png"
-    ],
-    "Physics": "Sample.physics3.json",
-    "UserData": "Sample.userdata3.json"
-  },
-  "Groups": [
-    {
-      "Target": "Parameter",
-      "Name": "EyeBlink",
-      "Ids": [
-        "EyeLOpen",
-        "EyeROpen"
-      ]
-    }
-  ]
-}
-```

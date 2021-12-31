@@ -1,0 +1,16 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "Sample.moc3",
+    "Textures": ["Sample.png"],
+    "Physics": "Sample.physics3.json",
+    "UserData": "Sample.userdata3.json"
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": ["EyeLOpen", "EyeROpen"]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "Version": 3,
+  "Meta": {
+    "Duration": 1,
+    "Fps": 120,
+    "FadeInTime": 2,
+    "FadeOutTime": 2,
+    "CurveCount": 3,
+    "TotalSegmentCount": 3,
+    "TotalPointCount": 6,
+    "UserDataCount": 2,
+    "TotalUserDataSize": 8
+  },
+  "UserData": [
+    {
+      "Time": 1.234,
+      "Value": "hoge"
+    },
+    {
+      "Time": 5.612,
+      "Value": "fuga"
+    }
+  ],
+  "Curves": [
+    {
+      "Target": "Model",
+      "Id": "Opacity",
+      "Segments": [0, 0, 0, 1, 1]
+    },
+    {
+      "Target": "Parameter",
+      "Id": "EyeLOpen",
+      "Segments": [0, 0, 0, 1, 1]
+    },
+    {
+      "Target": "PartOpacity",
+      "Id": "ArmL",
+      "FadeInTime": 2,
+      "FadeOutTime": 2,
+      "Segments": [0, 0, 0, 1, 1]
+    }
+  ]
+}

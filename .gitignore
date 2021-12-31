@@ -1,0 +1,11 @@
+**
+**/
+!/src/
+!/src/**/
+!/src/**/*.adoc
+!/src/**/*.json
+!/.editorconfig
+!/.gitattributes
+!/.gitignore
+!/checkscript.py
+!/README.adoc

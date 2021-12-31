@@ -1,0 +1,29 @@
+= pose3.json File Format Specifications
+
+== JSON Schema
+
+[source,json]
+----
+include::schema.json[]
+----
+
+== Description
+
+=== Group
+
+Only one node is displayed in the group.
+
+=== Switching control node
+
+`Id`: Data is Part ID.
+
+Manipulate the opacity of the part while referring to non-existent parameters operated from motion.
+
+`Link`: A list of parts IDs that manipulates the opacity of parts in cooperation with Id.
+
+== JSON Example
+
+[source,json]
+----
+include::example.pose3.json[]
+----
