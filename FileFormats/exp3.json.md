@@ -15,13 +15,13 @@
             "type":"string",
             "enum": ["Live2D Expression"]
         },
-        "FadeIn":
+        "FadeInTime":
          {
             "description":"[Optional] Time of the Fade-In for easing in seconds.",
             "type":"number",
             "minimum":0
         },
-        "FadeOut":
+        "FadeOutTime":
          {
             "description":"[Optional] Time of the Fade-Out for easing in seconds.",
             "type":"number",
