@@ -4,15 +4,12 @@
 
 ```json
 {
+  "$schema": "http://json-schema.org/schema#",
   "title": "Cubism cdi3.json File Format",
   "type": "object",
   "definitions": {
-    "Version": {
-      "description": "Json file format version.",
-      "type": "number"
-    },
-    "Parameters": {
-      "description": "All Parameters.",
+    "Parameter": {
+      "description": "Information to correlate Id, Group, and Display-Name in the parameter.",
       "type": "object",
       "properties": {
         "Id": {
@@ -27,10 +24,12 @@
           "description": "Name of the parameter.",
           "type": "string"
         }
-      }
+      },
+      "required": ["Id", "GroupId", "Name"],
+      "additionalProperties": false
     },
-    "ParameterGroups": {
-      "description": "All ParameterGroups.",
+    "ParameterGroup": {
+      "description": "Information to correlate Id, Group, and Display-Name in the ParameterGroup.",
       "type": "object",
       "properties": {
         "Id": {
@@ -45,10 +44,12 @@
           "description": "Name of the parameter group.",
           "type": "string"
         }
-      }
+      },
+      "required": ["Id", "GroupId", "Name"],
+      "additionalProperties": false
     },
-    "Parts": {
-      "description": "All Parts.",
+    "Part": {
+      "description": "Information to correlate Id and Display-Name in the Part.",
       "type": "object",
       "properties": {
         "Id": {
@@ -59,9 +60,58 @@
           "description": "Name of the part.",
           "type": "string"
         }
+      },
+      "required": ["Id", "Name"],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "Version": {
+      "description": "Json file format version.",
+      "type": "number"
+    },
+    "Parameters": {
+      "description": "All Parameters.",
+      "type": "array",
+      "items": {            
+        "description": "Array of the Paramter",
+        "$ref": "#/definitions/Parameter"
+      }
+    },
+    "ParameterGroups": {        
+      "description": "All ParameterGroups.",
+      "type": "array",
+      "items": {            
+        "description": "Array of the ParameterGroup",
+        "$ref": "#/definitions/ParameterGroup"
+      }
+    },
+    "Parts": {            
+      "description": "All Parts.",
+      "type": "array",
+      "items": {            
+        "description": "Array of the Part",
+        "$ref": "#/definitions/Part"
+      }
+    },
+    "CombinedParameters": {        
+      "description": "[Optional] Parameter combination informations.",
+      "type": "array",
+      "items": {
+        "description": "Array of the Combine.",
+
+        "type": "array",
+        "items": {
+            "description": "Array of the ParameterId",
+            "type": "string"
+        },
+        "minItems": 2,
+        "maxItems": 2
       }
     }
-  }
+  },
+  "required": ["Version", "ParameterGroups", "Parts"],
+  "additionalProperties": false
 }
 ```
 
@@ -126,6 +176,12 @@ Each parameter or parameter group has a groupId identifier. The corresponding gr
 			"Id": "PartMouth",
 			"Name": "Mouth"
 		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamAngleX",
+			"ParamAngleY"
+		]
 	]
 }
 ```
