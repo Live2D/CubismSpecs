@@ -255,6 +255,10 @@
 					"description": "Total number of vertices.",
 					"type": "number"
 				},
+				"Fps": {					
+					"description": "[Optional] Settings of physics update speed.",
+					"type": "number"
+				},
 				"EffectiveForces": {
 					"description": "Settings of gravity and wind.",
 					"$ref": "#/definitions/effective force"
@@ -297,6 +301,7 @@ Use physics3.json http://docs.live2d.com/cubism-sdk-manual/physics/
 		"TotalInputCount": 3,
 		"TotalOutputCount": 4,
 		"VertexCount": 5,
+		"Fps": 30,
 		"EffectiveForces": {
 			"Gravity": {
 				"X": 0,
