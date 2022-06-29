@@ -126,7 +126,7 @@
           "type": "object",
           "patternProperties":
           {
-            ".+":
+            ".*":
             {
               "type": "array",
               "items":{
