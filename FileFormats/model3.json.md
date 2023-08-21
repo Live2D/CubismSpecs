@@ -65,6 +65,10 @@
         "Sound": {
           "description": "[Optional] Audio files playback with motion.",
           "type": "string"
+        },
+        "MotionSync": {
+          "description": "[Optional] Name of motion-sync setting.",
+          "type": "string"
         }
       },
       "required": ["File"],
@@ -105,6 +109,10 @@
         },
         "DisplayInfo": {
           "description": "[Optional] Relative path to the cdi3.json file.",
+          "type": "string"
+        },
+        "MotionSync": {
+          "description": "[Optional] Relative path to the motionsync3.json file.",
           "type": "string"
         },
         "Expressions": {
