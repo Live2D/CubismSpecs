@@ -185,8 +185,10 @@ that represents the end of the segment, or *3 point in case of bézier segments*
 The t components of bézier control points are proportionally fixed as follows.
 
 ```math
-P1.t = (P3.t - P0.t) / 3  
-P2.t = ((P3.t - P0.t) / 3) * 2
+\displaylines{
+P1.t = 1/3 (P3.t - P0.t)\
+P2.t = 2/3 (P3.t - P0.t)\
+}
 ```
 
 Curves can't be empty.
