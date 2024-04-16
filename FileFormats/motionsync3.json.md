@@ -244,37 +244,53 @@ Use motionsync3 https://docs.live2d.com/cubism-sdk-manual/motion-sync-addon/
   "Settings": [
     {
       "Id": "MotionSyncSetting1",
-      "AnalysisType": "OVR",
+      "AnalysisType": "CRI",
       "UseCase": "Mouth",
       "CubismParameters": [
         {
-          "Name": "口 変形",
-          "Id": "ParamMouthForm",
-          "Min": -1.0,
-          "Max": 1.0,
-          "Damper": 0.0,
-          "Smooth": 25
-        },
-        {
-          "Name": "口　開閉",
+          "Name": "Mouth_Open",
           "Id": "ParamMouthOpenY",
-          "Min": -1.0,
+          "Min": 0.0,
           "Max": 1.0,
           "Damper": 0.0,
           "Smooth": 25
         },
         {
-          "Name": "舌",
-          "Id": "ParamTongue",
-          "Min": -1.0,
+          "Name": "A",
+          "Id": "ParamA",
+          "Min": 0.0,
           "Max": 1.0,
           "Damper": 0.0,
           "Smooth": 25
         },
         {
-          "Name": "顎",
-          "Id": "ParamJaw",
-          "Min": -1.0,
+          "Name": "I",
+          "Id": "ParamI",
+          "Min": 0.0,
+          "Max": 1.0,
+          "Damper": 0.0,
+          "Smooth": 25
+        },
+        {
+          "Name": "U",
+          "Id": "ParamU",
+          "Min": 0.0,
+          "Max": 1.0,
+          "Damper": 0.0,
+          "Smooth": 25
+        },
+        {
+          "Name": "E",
+          "Id": "ParamE",
+          "Min": 0.0,
+          "Max": 1.0,
+          "Damper": 0.0,
+          "Smooth": 25
+        },
+        {
+          "Name": "O",
+          "Id": "ParamO",
+          "Min": 0.0,
           "Max": 1.0,
           "Damper": 0.0,
           "Smooth": 25
@@ -282,91 +298,35 @@ Use motionsync3 https://docs.live2d.com/cubism-sdk-manual/motion-sync-addon/
       ],
       "AudioParameters": [
         {
-          "Name": "sil",
-          "Id": "sil",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 6.9,
-          "Enabled": true
-        },
-        {
-          "Name": "PP",
-          "Id": "PP",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 6.9,
-          "Enabled": false
-        },
-        {
-          "Name": "FF",
-          "Id": "FF",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": false
-        },
-        {
-          "Name": "TH",
-          "Id": "TH",
+          "Name": "Silence",
+          "Id": "Silence",
           "Min": 0.0,
           "Max": 1.0,
           "Scale": 1.0,
           "Enabled": true
         },
         {
-          "Name": "DD",
-          "Id": "DD",
+          "Name": "A",
+          "Id": "A",
+          "Min": 0.0,
+          "Max": 1.0,
+          "Scale": 0.30000001192092896,
+          "Enabled": true
+        },
+        {
+          "Name": "I",
+          "Id": "I",
           "Min": 0.0,
           "Max": 1.0,
           "Scale": 1.0,
           "Enabled": true
         },
         {
-          "Name": "kk",
-          "Id": "kk",
+          "Name": "U",
+          "Id": "U",
           "Min": 0.0,
           "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "CH",
-          "Id": "CH",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "SS",
-          "Id": "SS",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "nn",
-          "Id": "nn",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "RR",
-          "Id": "RR",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "aa",
-          "Id": "aa",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 1.0,
+          "Scale": 1.5,
           "Enabled": true
         },
         {
@@ -374,274 +334,136 @@ Use motionsync3 https://docs.live2d.com/cubism-sdk-manual/motion-sync-addon/
           "Id": "E",
           "Min": 0.0,
           "Max": 1.0,
-          "Scale": 1.0,
+          "Scale": 6.0,
           "Enabled": true
         },
         {
-          "Name": "ih",
-          "Id": "ih",
+          "Name": "O",
+          "Id": "O",
           "Min": 0.0,
           "Max": 1.0,
-          "Scale": 1.0,
-          "Enabled": true
-        },
-        {
-          "Name": "oh",
-          "Id": "oh",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 4.0,
-          "Enabled": true
-        },
-        {
-          "Name": "ou",
-          "Id": "ou",
-          "Min": 0.0,
-          "Max": 1.0,
-          "Scale": 4.0,
+          "Scale": 8.0,
           "Enabled": true
         }
       ],
       "Mappings": [
         {
           "Type": "Shape",
-          "Id": "sil",
+          "Id": "Silence",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": 0
+                "Id": "ParamMouthOpenY",
+                "Value": 0.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0
+                "Id": "ParamA",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0
+                "Id": "ParamI",
+                "Value": 0.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0
+                "Id": "ParamU",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamE",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamO",
+                "Value": 0.0
             }
           ]
         },
         {
           "Type": "Shape",
-          "Id": "PP",
+          "Id": "A",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": -0.5
+                "Id": "ParamMouthOpenY",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0
+                "Id": "ParamA",
+                "Value": 1.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0
+                "Id": "ParamI",
+                "Value": 0.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0
+                "Id": "ParamU",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamE",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamO",
+                "Value": 0.0
             }
           ]
         },
         {
           "Type": "Shape",
-          "Id": "FF",
+          "Id": "I",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": -0.8
+                "Id": "ParamMouthOpenY",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.1
+                "Id": "ParamA",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0
+                "Id": "ParamI",
+                "Value": 1.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0
+                "Id": "ParamU",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamE",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamO",
+                "Value": 0.0
             }
           ]
         },
         {
           "Type": "Shape",
-          "Id": "TH",
+          "Id": "U",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": 0.5
+                "Id": "ParamMouthOpenY",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.35
+                "Id": "ParamA",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0.5
+                "Id": "ParamI",
+                "Value": 0.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0.1
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "DD",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 0.6
+                "Id": "ParamU",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.45
+                "Id": "ParamE",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0.6
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.3
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "kk",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 0.7
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.55
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.2
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.3
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "CH",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": -0.7
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.3
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.7
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.2
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "SS",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 0.6
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.35
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.6
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.2
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "nn",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 0.35
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.45
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.6
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.3
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "RR",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 0.65
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.45
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 1
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.2
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "aa",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": 1
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 1
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.5
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 1
+                "Id": "ParamO",
+                "Value": 0.0
             }
           ]
         },
@@ -650,94 +472,66 @@ Use motionsync3 https://docs.live2d.com/cubism-sdk-manual/motion-sync-addon/
           "Id": "E",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": 1
+                "Id": "ParamMouthOpenY",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.7
+                "Id": "ParamA",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0.5
+                "Id": "ParamI",
+                "Value": 0.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0.4
+                "Id": "ParamU",
+                "Value": 0.0
+            },
+            {
+                "Id": "ParamE",
+                "Value": 1.0
+            },
+            {
+                "Id": "ParamO",
+                "Value": 0.0
             }
           ]
         },
         {
           "Type": "Shape",
-          "Id": "ih",
+          "Id": "O",
           "Targets": [
             {
-              "Id": "ParamMouthForm",
-              "Value": 1
+                "Id": "ParamMouthOpenY",
+                "Value": 1.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.4
+                "Id": "ParamA",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0.5
+                "Id": "ParamI",
+                "Value": 0.0
             },
             {
-              "Id": "ParamJaw",
-              "Value": 0.1
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "oh",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": -1
+                "Id": "ParamU",
+                "Value": 0.0
             },
             {
-              "Id": "ParamMouthOpenY",
-              "Value": 1
+                "Id": "ParamE",
+                "Value": 0.0
             },
             {
-              "Id": "ParamTongue",
-              "Value": 0
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.5
-            }
-          ]
-        },
-        {
-          "Type": "Shape",
-          "Id": "ou",
-          "Targets": [
-            {
-              "Id": "ParamMouthForm",
-              "Value": -1
-            },
-            {
-              "Id": "ParamMouthOpenY",
-              "Value": 0.4
-            },
-            {
-              "Id": "ParamTongue",
-              "Value": 0.2
-            },
-            {
-              "Id": "ParamJaw",
-              "Value": 0.2
+                "Id": "ParamO",
+                "Value": 1.0
             }
           ]
         }
       ],
       "PostProcessing": {
-        "BlendRatio": 0.5,
-        "Smoothing": 30,
-        "SampleRate": 30
+          "BlendRatio": 0.5,
+          "Smoothing": 60,
+          "SampleRate": 60.0
       }
     }
   ]
