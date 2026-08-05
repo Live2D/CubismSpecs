@@ -8,6 +8,10 @@
     "title": "Cubism pose3.json File Format",
     "type":"object",
     "properties": {
+        "Version": {
+            "description": "[Optional] Json file format version. Interpreted as 3 when omitted.",
+            "type": "number"
+        },
         "Type":{
           "description":"",
           "type":"string",
@@ -72,6 +76,7 @@ Link:A list of parts IDs that manipulates the opacity of parts in cooperation wi
 
 ```json
 {
+  "Version": 3,
   "Type": "Live2D Pose",
   "Groups": [
     [
