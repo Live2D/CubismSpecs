@@ -9,6 +9,10 @@
     "type":"object",
     "properties":
     {
+        "Version": {
+            "description": "[Optional] Json file format version. Interpreted as 3 when omitted.",
+            "type": "number"
+        },
         "Type":
          {
             "description":"Json file format type.",
@@ -72,6 +76,7 @@ exp3.json targets only the parameters of the model.
 
 ```json
 {
+  "Version": 3,
   "Type": "Live2D Expression",
   "Parameters": [
     {
