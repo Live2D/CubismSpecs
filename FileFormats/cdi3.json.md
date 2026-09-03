@@ -63,6 +63,22 @@
       },
       "required": ["Id", "Name"],
       "additionalProperties": false
+    },
+    "Drawable": {
+      "description": "Information to correlate Id and Display-Name in the Drawable.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the drawable.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the drawable.",
+          "type": "string"
+        }
+      },
+      "required": ["Id", "Name"],
+      "additionalProperties": false
     }
   },
   "properties": {
@@ -92,6 +108,14 @@
       "items": {            
         "description": "Array of the Part",
         "$ref": "#/definitions/Part"
+      }
+    },
+    "Drawables": {
+      "description": "[Optional] All Drawables.",
+      "type": "array",
+      "items": {
+        "description": "Array of the Drawable",
+        "$ref": "#/definitions/Drawable"
       }
     },
     "CombinedParameters": {        
@@ -175,6 +199,16 @@ Each parameter or parameter group has a groupId identifier. The corresponding gr
 		{
 			"Id": "PartMouth",
 			"Name": "Mouth"
+		}
+	],
+	"Drawables": [
+		{
+			"Id": "ArtMesh1",
+			"Name": "Tongue"
+		},
+		{
+			"Id": "ArtMesh2",
+			"Name": "Pupil R"
 		}
 	],
 	"CombinedParameters": [
