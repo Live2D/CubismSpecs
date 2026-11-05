@@ -63,6 +63,22 @@
       },
       "required": ["Id", "Name"],
       "additionalProperties": false
+    },
+    "ArtMesh": {
+      "description": "Information to correlate Id and Display-Name in the ArtMesh. The Id used for correlation is the Id obtained from csmGetDrawableIds.",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "description": "Identifier for the ArtMesh.",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Name of the ArtMesh.",
+          "type": "string"
+        }
+      },
+      "required": ["Id", "Name"],
+      "additionalProperties": false
     }
   },
   "properties": {
@@ -74,7 +90,7 @@
       "description": "All Parameters.",
       "type": "array",
       "items": {            
-        "description": "Array of the Paramter",
+        "description": "Array of the Parameter",
         "$ref": "#/definitions/Parameter"
       }
     },
@@ -92,6 +108,14 @@
       "items": {            
         "description": "Array of the Part",
         "$ref": "#/definitions/Part"
+      }
+    },
+    "ArtMeshes": {
+      "description": "[Optional] All ArtMeshes.",
+      "type": "array",
+      "items": {
+        "description": "Array of the ArtMesh",
+        "$ref": "#/definitions/ArtMesh"
       }
     },
     "CombinedParameters": {        
@@ -175,6 +199,12 @@ Each parameter or parameter group has a groupId identifier. The corresponding gr
 		{
 			"Id": "PartMouth",
 			"Name": "Mouth"
+		}
+	],
+	"ArtMeshes": [
+		{
+			"Id": "ArtMeshArm01",
+			"Name": "Arm 01"
 		}
 	],
 	"CombinedParameters": [
